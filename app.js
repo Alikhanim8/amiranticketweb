@@ -250,16 +250,16 @@ app.addEventListener('click', e => {
 // ───────────────────────── صفحه‌ها ─────────────────────────
 const Views = {
   splash() {
-    app.innerHTML = `<div class="view splash"><div class="mid">${logo(300)}</div>
+    app.innerHTML = `<div class="view splash"><div class="mid">${logo(240)}</div>
       <div dir="ltr" class="muted" style="letter-spacing:4px;font-size:14px">SCAN&nbsp;&nbsp;•&nbsp;&nbsp;PRINT&nbsp;&nbsp;•&nbsp;&nbsp;MANAGE</div>
       <div class="bar"><i></i></div>${foot}</div>`;
     setTimeout(() => { if (stack[stack.length - 1][0] === 'splash') go(License.valid() ? 'home' : 'license', null, true); }, 1300);
   },
 
   license() {
-    app.innerHTML = `<div class="view"><div style="margin-top:6vh">${logo(260)}</div>
+    app.innerHTML = `<div class="view"><div style="margin-top:6vh">${logo(210)}</div>
       <div class="scroll" style="padding-top:18px"><div class="card">
-        <div style="font-weight:900;font-size:18px;text-align:center;margin-bottom:6px">فعال‌سازی برنامه</div>
+        <div style="font-weight:900;font-size:16px;text-align:center;margin-bottom:6px">فعال‌سازی برنامه</div>
         <p class="muted small" style="text-align:center;margin:0 0 14px;line-height:1.9">کد لایسنس را وارد کنید. این کار فقط یک‌بار لازم است.<br>اگر برنامه را حذف و دوباره نصب کنید یا اطلاعات سایت پاک شود، باید دوباره کد را وارد کنید.</p>
         <input id="code" class="f ltr" autocapitalize="characters" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="کد لایسنس">
         <div class="errt" id="err" style="color:#ff6b6b;text-align:center;min-height:20px;margin-top:8px;font-size:13px"></div>
@@ -275,7 +275,7 @@ const Views = {
   },
 
   home() {
-    app.innerHTML = `<div class="view"><div style="padding:6px 0 10px">${logo(280)}</div><div class="scroll">
+    app.innerHTML = `<div class="view"><div style="padding:6px 0 10px">${logo(230)}</div><div class="scroll">
       ${btn('scan', '▦', 'اسکن بارکد', 'شروع عملیات اسکن', true)}
       ${btn('saved', '🗂', 'فایل‌های ذخیره شده', 'مشاهده و مدیریت عملیات‌ها')}
       ${btn('fest', '🗄', 'دیتابیس جشنواره', 'مدیریت بارکدهای جشنواره')}
@@ -310,7 +310,7 @@ const Views = {
         <button class="rbtn" id="clear" aria-label="پاک کردن لیست">🗑</button></div>
       <div class="card" style="padding:10px 14px;display:flex;align-items:center;gap:8px;border-radius:18px">
         <span class="muted small">آخرین بارکد:</span><b id="last" class="ltr" style="flex:1;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:ltr">—</b><span id="lastk" class="small muted"></span></div>
-      <div class="row" style="margin:12px 4px 6px"><b style="font-size:17px">نتایج اسکن</b><span style="flex:1"></span><span class="pill" id="cnt" style="padding:3px 12px">0</span></div>
+      <div class="row" style="margin:12px 4px 6px"><b style="font-size:15px">نتایج اسکن</b><span style="flex:1"></span><span class="pill" id="cnt" style="padding:3px 12px">0</span></div>
       <div class="scroll" id="list"></div>
       <div class="card" style="margin:6px 0 8px;padding:10px 14px;border-radius:20px;line-height:1.7" id="sum"></div>
       ${btn('save', '📄', 'ذخیره و ساخت فایل TXT', '', true)}${foot}</div>`;
@@ -432,7 +432,7 @@ const Views = {
       const o = ops.find(x => String(x.id) === it.dataset.id);
       if (a.dataset.a === 'open') return go('scan', { name: o.name, id: o.id, items: o.items });
       const choice = await modal({
-        sheet: true, title: o.name, body: `<div style="margin-top:8px">${[['open', '▶', 'باز کردن و ادامه'], ['export', '↗', 'اشتراک‌گذاری فایل'], ['save', '⬇', 'ذخیره در فایل'], ['delete', '🗑', 'حذف']].map(([k, i, t]) => `<button class="gb" data-ch="${k}" style="height:56px;margin-bottom:8px;border-radius:18px"><span class="ic" style="width:36px;height:36px">${i}</span><span class="tx"><span class="t">${t}</span></span></button>`).join('')}</div>`,
+        sheet: true, title: o.name, body: `<div style="margin-top:8px">${[['open', '▶', 'باز کردن و ادامه'], ['export', '↗', 'اشتراک‌گذاری فایل'], ['save', '⬇', 'ذخیره در فایل'], ['delete', '🗑', 'حذف']].map(([k, i, t]) => `<button class="gb" data-ch="${k}" style="height:50px;margin-bottom:8px;border-radius:16px"><span class="ic" style="width:30px;height:30px">${i}</span><span class="tx"><span class="t">${t}</span></span></button>`).join('')}</div>`,
         onMount: (ov, close) => ov.addEventListener('click', ev => { const b = ev.target.closest('button[data-ch]'); if (b) close(b.dataset.ch); }),
       });
       if (choice === 'open') go('scan', { name: o.name, id: o.id, items: o.items });
@@ -451,8 +451,8 @@ const Views = {
     };
     app.innerHTML = `<div class="view">${tb('دیتابیس جشنواره')}<div class="row" id="stats" style="margin-bottom:10px"></div>
       <input id="q" class="f ltr" placeholder="جستجوی بارکد" style="margin-bottom:10px">
-      <div class="row" style="margin-bottom:10px"><button class="gb" id="imp" style="height:64px;margin:0"><span class="ic">⬆</span><span class="tx"><span class="t">وارد کردن</span></span></button>
-      <button class="gb" id="exp" style="height:64px;margin:0"><span class="ic">⬇</span><span class="tx"><span class="t">خروجی</span></span></button>
+      <div class="row" style="margin-bottom:10px"><button class="gb" id="imp" style="height:52px;margin:0"><span class="ic">⬆</span><span class="tx"><span class="t">وارد کردن</span></span></button>
+      <button class="gb" id="exp" style="height:52px;margin:0"><span class="ic">⬇</span><span class="tx"><span class="t">خروجی</span></span></button>
       <button class="rbtn" id="clr" aria-label="پاک کردن دیتابیس">🗑</button></div>
       <div class="scroll" id="flist"></div>${foot}</div><input type="file" id="file" accept=".txt,.csv,text/plain,text/csv" style="display:none">`;
     draw();
@@ -480,7 +480,7 @@ const Views = {
       <div class="card" style="margin-top:12px"><div style="font-weight:900;margin-bottom:6px">لایسنس</div>
         <div>${li ? esc(li.title) : 'فعال نشده'}</div><div class="muted small" style="margin-top:4px">${li ? (li.days == null ? 'بدون محدودیت زمانی' : `${li.days} روز باقی‌مانده`) : ''}</div></div>
       ${window.BC_ENDPOINT ? '' : `<div class="card" style="margin-top:12px"><label class="lb">آدرس سرویس BC</label><input id="bcu" class="f ltr" placeholder="https://script.google.com/macros/s/…/exec" value="${esc(s.bc)}"><div class="muted small" style="margin-top:6px">آدرس Web App در Google Apps Script (برای «ارسال به BC»)</div></div>`}
-      <div class="card" style="margin-top:12px;text-align:center"><div style="font-size:20px;font-weight:900;letter-spacing:2px">AMIRAN TICKET</div><div class="muted" style="margin:6px 0">نسخه 1.0.0 (وب‌اپ)</div><div style="font-style:italic;color:rgba(255,255,255,.7);letter-spacing:1px">SilverX&nbsp;&nbsp;•&nbsp;&nbsp;SRX TEAM</div></div>
+      <div class="card" style="margin-top:12px;text-align:center"><div style="font-size:17px;font-weight:900;letter-spacing:2px">AMIRAN TICKET</div><div class="muted" style="margin:6px 0">نسخه 1.0.0 (وب‌اپ)</div><div style="font-style:italic;color:rgba(255,255,255,.7);letter-spacing:1px">SilverX&nbsp;&nbsp;•&nbsp;&nbsp;SRX TEAM</div></div>
       <div style="height:12px"></div></div>${foot}</div>`;
     $('.scroll').addEventListener('click', e => { const t = e.target.closest('.tg'); if (!t) return; const on = !t.classList.contains('on'); t.classList.toggle('on', on); t.setAttribute('aria-checked', on); Settings.set({ [t.dataset.k]: on }); });
     const bcu = $('#bcu'); if (bcu) bcu.onchange = () => { Settings.set({ bc: bcu.value.trim() }); toast('ذخیره شد'); };
