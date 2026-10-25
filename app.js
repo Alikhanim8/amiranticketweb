@@ -300,7 +300,7 @@ const Views = {
     const st = { name: p.name, id: p.id ?? null, items: new Map((p.items || []).map(e => [e.b, e.q])), last: null, lastAt: 0, paused: false, fs: DB.festSet(), set: Settings.get() };
     app.innerHTML = `<div class="view">${tb('اسکن بارکد')}
       <div class="cam"><video id="vid" playsinline muted autoplay></video>
-        <svg class="frame" viewBox="0 0 100 100" preserveAspectRatio="none"><g fill="none" stroke="#86E003" stroke-width="1.2" stroke-linecap="round" vector-effect="non-scaling-stroke"><path d="M12 28V14h16M72 14h16v14M88 72v14H72M28 86H12V72"/></g></svg>
+        <div class="frame"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
         <div class="hint"><span>بارکد را در قاب قرار دهید</span></div>
         <div class="err" id="camerr"><div id="camerrt"></div><button id="retry">تلاش دوباره</button></div></div>
       <div class="row" style="justify-content:space-around;margin:10px 0">

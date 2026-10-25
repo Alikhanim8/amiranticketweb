@@ -44,7 +44,12 @@ label.lb{display:block;font-weight:700;margin:0 0 8px;font-size:13px}
 .pill{padding:6px 12px;border-radius:18px;background:var(--panel);border:1px solid rgba(255,255,255,.22);font-weight:700;font-size:12px}
 .cam{position:relative;height:190px;border-radius:28px;overflow:hidden;background:#000;flex:none}
 .cam video{width:100%;height:100%;object-fit:cover}
-.cam .frame{position:absolute;inset:0;pointer-events:none}
+.cam .frame{position:absolute;left:50%;top:46%;width:60%;height:62%;transform:translate(-50%,-50%);pointer-events:none}
+.cam .frame i{position:absolute;width:20px;height:20px;border:0 solid #86E003}
+.cam .frame .tl{top:0;left:0;border-top-width:3px;border-left-width:3px;border-top-left-radius:8px}
+.cam .frame .tr{top:0;right:0;border-top-width:3px;border-right-width:3px;border-top-right-radius:8px}
+.cam .frame .bl{bottom:0;left:0;border-bottom-width:3px;border-left-width:3px;border-bottom-left-radius:8px}
+.cam .frame .br{bottom:0;right:0;border-bottom-width:3px;border-right-width:3px;border-bottom-right-radius:8px}
 .cam .hint{position:absolute;bottom:12px;left:0;right:0;text-align:center}
 .cam .hint span{background:rgba(0,0,0,.6);padding:5px 14px;border-radius:18px;font-size:12px}
 .cam .err{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;background:rgba(3,7,12,.92);font-size:14px;line-height:1.8}
